@@ -1,6 +1,6 @@
-class CreateUserplaylists < ActiveRecord::Migration
+class CreatePlaylists < ActiveRecord::Migration
   def change
-    create_table :userplaylists do |t|
+    create_table :playlists do |t|
       t.references :user
       t.references :comment
       t.string :name
@@ -8,7 +8,7 @@ class CreateUserplaylists < ActiveRecord::Migration
       t.string :image_link
 
       t.timestamps null:false
-    end
-    add_index(:userplaylists,[:user_id,:comment_id,:name],unique:true)
+      end
+      add_index(:playlist,[:user_id,:comment_id,:name],unique:true)
   end
 end
