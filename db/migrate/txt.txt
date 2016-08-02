@@ -1,0 +1,13 @@
+class CreatePlaylists < ActiveRecord::Migration
+  def change
+    create_table :playlists do |t|
+      t.references :user
+      t.string :name
+      t.string :ratings
+
+
+      t.timestamps null:false
+    end
+    add_index(:playlists,[:user_id,:name],unique:true)
+  end
+end
