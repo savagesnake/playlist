@@ -1,2 +1,12 @@
-<h1>Playlist#index</h1>
-<p>Find me in app/views/playlist/index.html.erb</p>
+<h1>Welcome To MyPlaylist</h1>
+<ul id="playlists">
+  <% @playlists.each do |playlist|%>
+  <li >
+    <h2><%=link_to("#{playlist.name}",{:action=>"show",:id=>"#{playlist.id}"},:class=>"playlist-title")%></h2>
+    <div class="playlist-box">
+    <!-- <h2><%= playlist.name%></h2> -->
+    <p>Rating: <%= playlist.rating%></p>
+    </div>
+  </li>
+  <% end %>
+</ul>

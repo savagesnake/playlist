@@ -6,7 +6,7 @@ class PlaylistsController < ApplicationController
   end
 
   def show
-    @playlists = Playlist.find(params[:id])
+    @playlist = Playlist.find(params[:id])
 
   end
 def  new
@@ -27,16 +27,16 @@ end
   end
 
   def update
-    @playlist = find_playlist.
+    @playlist = find_playlist
   end
 
   def delete
   end
-  priveate
+  private
   def find_playlist
       Playlist.find(params[:id])
   end
   def playlist_params
-      params.require(:playlist).permit(:name.:rating,:image_link)
+      # params.require(:playlist).permit(:name.:rating,:image_link)
   end
 end
