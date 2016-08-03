@@ -9,7 +9,7 @@ User.all.destroy_all
 Playlist.all.destroy_all
 
 usernames = [
-  {username:"wolf12",first_name:"wolfgang",last_name:"criollo",email:"wolf@test.com"},
+  {username:"wolf12",first_name:"Thor",last_name:"Thunder",email:"wolf@test.com"},
   {username:"Jack12",first_name:"Jack",last_name:"Daniels",email:"daniels@test.com"},
   {username:"Zeus13",first_name:"Zeus",last_name:"Deus",email:"Zeus@test.com"}]
 playlists = [
