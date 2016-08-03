@@ -11,25 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801234512) do
+ActiveRecord::Schema.define(version: 20160802025854) do
 
-  create_table "userplaylists", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "comments_id"
+  create_table "playlists", force: :cascade do |t|
     t.string   "name"
     t.string   "ratings"
     t.string   "image_link"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "playlists", ["name"], name: "index_playlists_on_name", unique: true
+
+  create_table "playlists_users", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "playlist_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  add_index "userplaylists", ["user_id", "name"], name: "index_userplaylists_on_user_id_and_name", unique: true
+  add_index "playlists_users", ["user_id", "playlist_id"], name: "index_playlists_users_on_user_id_and_playlist_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
+    t.string   "first_name",      null: false
+    t.string   "last_name",       null: false
+    t.string   "email",           null: false
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false

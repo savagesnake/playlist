@@ -1,3 +1,3 @@
 class User < ActiveRecord::Base
-  has_many :userplaylists
+  has_many :playlists,:through => :playlists_users
 end
