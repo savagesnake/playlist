@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   end
   def login
-      
+
   end
 
   def new
