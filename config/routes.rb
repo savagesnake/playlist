@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-  # get 'playlist/index'
-  # get 'playlist/show'
-  # get 'playlist/new'
-  # get 'playlist/update'
-  # get 'playlist/delete'
   root "playlists#index"
-  # root 'playlist#index'
   match ":controller(/:action(/:id))",:via=>[:get,:post]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -2,7 +2,7 @@ class PlaylistsController < ApplicationController
   layout false
   def index
     @playlists = Playlist.all
-    render("playlists/index")
+  
   end
 
   def show
