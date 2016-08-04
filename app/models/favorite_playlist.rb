@@ -1,4 +1,4 @@
-class PlaylistUser < ActiveRecord::Base
+class FavoritePlaylist < ActiveRecord::Base
   belongs_to :user
   belongs_to :playlist
 end

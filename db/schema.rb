@@ -11,26 +11,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803015149) do
+ActiveRecord::Schema.define(version: 20160804021322) do
 
-  create_table "playlist_users", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
+    t.integer  "playlist_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "comments", ["playlist_id"], name: "index_comments_on_playlist_id"
+
+  create_table "favorite_playlists", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "playlist_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  add_index "playlist_users", ["user_id", "playlist_id"], name: "index_playlist_users_on_user_id_and_playlist_id"
+  add_index "favorite_playlists", ["user_id", "playlist_id"], name: "index_favorite_playlists_on_user_id_and_playlist_id"
+
+  create_table "playlist_songs", force: :cascade do |t|
+    t.integer  "song_id"
+    t.integer  "playlist_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "playlist_songs", ["song_id", "playlist_id"], name: "index_playlist_songs_on_song_id_and_playlist_id"
 
   create_table "playlists", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "name"
-    t.string   "rating"
     t.string   "image_link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "playlists", ["name"], name: "index_playlists_on_name", unique: true
+  add_index "playlists", ["name", "user_id"], name: "index_playlists_on_name_and_user_id", unique: true
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "playlist_id"
+    t.integer  "rating"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "ratings", ["playlist_id"], name: "index_ratings_on_playlist_id"
+
+  create_table "songs", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username",        null: false
